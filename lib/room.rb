@@ -12,6 +12,21 @@ class Room
   end
 
   def exit(direction)
+    if @sides[direction] == "door"
+      new_coordinates = @coordinates
+      if direction == "north"
+        new_coordinates[1] += 1
+      elsif direction == "east"
+        new_coordinates[0] += 1
+      elsif direction == "south"
+        new_coordinates[1] -= 1
+      else
+        new_coordinates[0] -= 1
+      end
+      return new_coordinates
+    else
+      return "You cannot do that."
+    end
   end
 
 
