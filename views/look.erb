@@ -1,0 +1,5 @@
+<h2>You look <%= @direction.capitalize %>.</h2>
+
+<p>There is a <%= @room.look(@direction) %> here.</p>
+
+<p><a href="/location/<%= @room.coordinates[0] %>-<%= @room.coordinates[1] %>">Back to Room</a></p>

@@ -22,10 +22,16 @@ get('/location/:x_y') do
   erb(:location)
 end
 
-post('/action/look') do
+post('/action/look/:x_y') do
+  @direction = params["look-direction"]
+  coordinates = params[:x_y].split("-").map { |coord| coord.to_i }
+  @room = Room.find(coordinates)
   erb(:look)
 end
 
-post('/action/move') do
+post('/action/move/:x_y') do
+  @direction = params["move-direction"]
+  coordinates = params[:x_y].split("-").map { |coord| coord.to_i }
+  @room = Room.find(coordinates)
   erb(:move)
 end

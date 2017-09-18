@@ -1,7 +1,7 @@
 <h1>You are in <%= @room.description %> !</h1>
 
 <p>You are in a room. Your options are to:</p>
-<form action="/action/look" method="post">
+<form action="/action/look/<%= @room.coordinates[0] %>-<%= @room.coordinates[1] %>" method="post">
   <div class="form-group">
     <label for="look-direction">Look</label>
     <select name="look-direction" class="form-control">
@@ -14,7 +14,7 @@
   <button type="submit" class="btn">Look!</button>
 </form>
 
-<form action="/action/move" method="post">
+<form action="/action/move/<%= @room.coordinates[0] %>-<%= @room.coordinates[1] %>" method="post">
   <div class="form-group">
     <label for="move-direction">Move</label>
     <select name="move-direction" class="form-control">
