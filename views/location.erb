@@ -1,0 +1,28 @@
+<h1>You are in <%= @room.description %> !</h1>
+
+<p>You are in a room. Your options are to:</p>
+<form action="/action/look" method="post">
+  <div class="form-group">
+    <label for="look-direction">Look</label>
+    <select name="look-direction" class="form-control">
+      <option value="north">North</option>
+      <option value="east">East</option>
+      <option value="south">South</option>
+      <option value="west">West</option>
+    </select>
+  </div>
+  <button type="submit" class="btn">Look!</button>
+</form>
+
+<form action="/action/move" method="post">
+  <div class="form-group">
+    <label for="move-direction">Move</label>
+    <select name="move-direction" class="form-control">
+      <option value="north">North</option>
+      <option value="east">East</option>
+      <option value="south">South</option>
+      <option value="west">West</option>
+    </select>
+  </div>
+  <button type="submit" class="btn">Move!</button>
+</form>
