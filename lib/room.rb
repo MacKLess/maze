@@ -2,11 +2,12 @@
 require "pry"
 
 class Room
-  attr_reader(:coordinates, :sides, :id)
-  def initialize(coordinates, sides, id = nil)
+  attr_reader(:coordinates, :sides, :id, :description)
+  def initialize(coordinates, sides, id = nil, description = "a room")
     @coordinates = coordinates
     @sides = {"north" => sides[0], "east" => sides[1], "south" => sides[2], "west" => sides[3]}
     @id = id
+    @description = description
   end
 
   def look(direction)
@@ -40,7 +41,8 @@ class Room
     coord_equal = @coordinates == other_room.coordinates
     sides_equal = @sides == other_room.sides
     id_equal = @id == other_room.id
-    ((coord_equal & sides_equal) & id_equal)
+    description_equal = @description == other_room.description
+    (((coord_equal & sides_equal) & id_equal) & description_equal)
   end
 
   def self.find(coordinates)

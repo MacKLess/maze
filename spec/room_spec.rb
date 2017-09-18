@@ -44,9 +44,9 @@ describe('Room') do
   end
 
   describe('#==') do
-    it "says two objects are equal if they have the same coordinates, sides, and id" do
-      room1 = Room.new([1,0], ["wall", "door", "wall", "wall"], 1)
-      room2 = Room.new([1,0], ["wall", "door", "wall", "wall"], 1)
+    it "says two objects are equal if they have the same coordinates, sides, id, and description" do
+      room1 = Room.new([1,0], ["wall", "door", "wall", "wall"], 1, "hallway")
+      room2 = Room.new([1,0], ["wall", "door", "wall", "wall"], 1, "hallway")
       expect(room1).to(eq(room2))
     end
   end
