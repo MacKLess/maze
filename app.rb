@@ -33,5 +33,6 @@ post('/action/move/:x_y') do
   @direction = params["move-direction"]
   coordinates = params[:x_y].split("-").map { |coord| coord.to_i }
   @room = Room.find(coordinates)
+  @new_room = @room.exit(@direction)
   erb(:move)
 end

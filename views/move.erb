@@ -1,3 +1,7 @@
-<h2>You move.</h2>
-
-<p><a href="/location/<%= @room.coordinates[0] %>-<%= @room.coordinates[1] %>">Back to Room</a></p>
+<% if @new_room.class == String %>
+  <h2>You cannot move through walls.</h2>
+  <p><a href="/location/<%= @room.coordinates[0] %>-<%= @room.coordinates[1] %>">Back to Room</a></p>
+<% else %>
+  <h2>You open the door.</h2>
+  <p><a href="/location/<%= @new_room.coordinates[0] %>-<%= @new_room.coordinates[1] %>">Enter the next room</a></p>
+<% end %>
