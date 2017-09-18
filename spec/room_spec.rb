@@ -27,8 +27,11 @@ describe('Room') do
     end
 
     it "does allow user to exit through a door" do
-      room = Room.new([1,0], ["wall", "door", "wall", "wall"])
-      expect(room.exit("east")).to(eq([2,0]))
+      room1 = Room.new([1,0], ["wall", "door", "wall", "wall"])
+      room1.save
+      room2 = Room.new([2,0], ["door", "wall", "wall", "door"])
+      room2.save
+      expect(room1.exit("east")).to(eq(room2))
     end
   end
 

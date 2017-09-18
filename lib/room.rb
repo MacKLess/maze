@@ -25,7 +25,7 @@ class Room
       else
         new_coordinates[0] -= 1
       end
-      return new_coordinates
+      return self.class.find(new_coordinates)
     else
       return "You cannot do that."
     end
