@@ -33,7 +33,7 @@ class Room
   end
 
   def save
-    result = DB.exec("INSERT INTO rooms (north, east, south, west, xcoord, ycoord) VALUES ('#{@sides["north"]}', '#{@sides["east"]}', '#{@sides["south"]}', '#{@sides["west"]}', #{@coordinates[0]}, #{@coordinates[1]}) RETURNING id;")
+    result = DB.exec("INSERT INTO rooms (north, east, south, west, xcoord, ycoord, description) VALUES ('#{@sides["north"]}', '#{@sides["east"]}', '#{@sides["south"]}', '#{@sides["west"]}', #{@coordinates[0]}, #{@coordinates[1]}, '#{@description}') RETURNING id;")
     @id = result.first.fetch("id").to_i
   end
 
@@ -48,6 +48,6 @@ class Room
   def self.find(coordinates)
     results = DB.exec("SELECT * FROM rooms WHERE xcoord = #{coordinates[0]} AND ycoord = #{coordinates[1]}")
     result = results.first
-    Room.new(coordinates, [result.fetch("north"), result.fetch("east"), result.fetch("south"), result.fetch("west")], result.fetch("id").to_i)
+    Room.new(coordinates, [result.fetch("north"), result.fetch("east"), result.fetch("south"), result.fetch("west")], result.fetch("id").to_i, result.fetch("description"))
   end
 end
